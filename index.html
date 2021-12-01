@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <script href="script.js"></script>
+    <title>Memory game</title>
+  </head>
+
+  <body>
+    <h1>Memory Game</h1>
+    <div id="tavolo"></div>
+    <script>
+      let carteGirate = [];
+      let tavolo = document.querySelector("#tavolo");
+      let mazzo = [
+        { nome: "pufferfish", img: "images/pufferFish.png" },
+        { nome: "crab", img: "images/crab.png" },
+        { nome: "dolphin", img: "images/dolphin.png" },
+        { nome: "seahorse", img: "images/seaHorse.png" },
+        { nome: "seashell", img: "images/seaShell.png" },
+        { nome: "seastar", img: "images/seaStar.png" },
+        { nome: "shark", img: "images/shark.png" },
+        { nome: "stingray", img: "images/stingRay.png" },
+        { nome: "whale", img: "images/whale.png" },
+        { nome: "turtle", img: "images/turtle.png" },
+        { nome: "pufferfish", img: "images/pufferFish.png" },
+        { nome: "crab", img: "images/crab.png" },
+        { nome: "dolphin", img: "images/dolphin.png" },
+        { nome: "seahorse", img: "images/seaHorse.png" },
+        { nome: "seashell", img: "images/seaShell.png" },
+        { nome: "seastar", img: "images/seaStar.png" },
+        { nome: "shark", img: "images/shark.png" },
+        { nome: "stingray", img: "images/stingRay.png" },
+        { nome: "whale", img: "images/whale.png" },
+        { nome: "turtle", img: "images/turtle.png" },
+      ];
+      function giraCarta() {
+        posizione = this.getAttribute("pos");
+        this.setAttribute("src", mazzo[posizione].img);
+        mano(mazzo[posizione].name, posizione);
+      }
+      function posaSuTavolo() {
+        //ESTRELLA PLATINADA EL MUNDAAAAAAAAAAAAAAAAAAaaaaaAAAAAAAaaaahAAHAHAHAAajajajajajajajajajajja
+        //Posiziona ogni carta presente nel mazzo sul tavolo
+        for (let posizione = 0; posizione < mazzo.length; posizione++) {
+          console.log(mazzo[posizione].nome);
+          let carta = document.createElement("img");
+          carta.setAttribute("src", "images/blank.png");
+          carta.setAttribute("pos", posizione);
+          carta.addEventListener("click", giraCarta);
+          tavolo.appendChild(carta);
+        }
+      }
+      posaSuTavolo();
+      function mano(nome, posizione) {
+        //controllare se due carte siano starplatinum o king crimson
+        //IN CASO COINCIDASNO DEVE RIMUOVERE LE CARTE DAL TAVOLO
+        //NEL CASO IN CUI NON COINCIDANO, LE RIGIRA.
+        carteGirate.push({ n: nome, p: posizione });
+        if (carteGirate.lenght == 2) {
+          if (carteGirate[0].nome == carteGirate[1].nome) {
+            let ele = document.querySelector("pos");
+            carteGirate[0].setAttribute("src", "image/vuota.png");
+            carteGirate[1].setAttribute("src", "image/vuota.png");
+          } else {
+          }
+        } else {
+        }
+      }
+    </script>
+  </body>
+</html>
